@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://ewn1ixhacy6a"]
+
+[ext_resource type="Texture2D" uid="uid://0qpmihp7skf6" path="res://Flappy Bird Assets 1.6 (Zip)/Flappy Bird Assets/Player/StyleBird2/Bird2-6.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://c8g81bqq6kn1f" path="res://GD SCRIPTS/player.gd" id="1_onrkg"]
+[ext_resource type="AudioStream" uid="uid://klsp38agsqqn" path="res://Sound Efects/wing.ogg" id="3_i3pqv"]
+[ext_resource type="AudioStream" uid="uid://cil84da87bjn4" path="res://Sound Efects/hit.ogg" id="4_hqtel"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crnqq"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j88tq"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cchwj"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ljjq"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_axl6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crnqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j88tq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cchwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ljjq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j88tq"]
+size = Vector2(16, 15)
+
+[node name="player" type="CharacterBody2D" unique_id=1043748519]
+scale = Vector2(2, 2)
+script = ExtResource("1_onrkg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=139775666]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_axl6x")
+animation = &"idle"
+autoplay = "idle"
+frame = 2
+frame_progress = 0.033142403
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=507979724]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j88tq")
+
+[node name="WING" type="AudioStreamPlayer2D" parent="." unique_id=567129930]
+stream = ExtResource("3_i3pqv")
+
+[node name="HIT" type="AudioStreamPlayer2D" parent="." unique_id=704691161]
+visible = false
+stream = ExtResource("4_hqtel")

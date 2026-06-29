@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://1hsye50glthq"]
+
+[ext_resource type="Script" uid="uid://d1xlrv6b4wb7g" path="res://GD SCRIPTS/main.gd" id="1_51mm7"]
+[ext_resource type="PackedScene" uid="uid://crximpekdq28l" path="res://TSCN FILE/pipe.tscn" id="2_166cc"]
+[ext_resource type="PackedScene" uid="uid://pcaqsvnguy7t" path="res://TSCN FILE/background.tscn" id="3_uy8mw"]
+[ext_resource type="PackedScene" uid="uid://djlwyupl6grda" path="res://TSCN FILE/background2.tscn" id="4_xkjqv"]
+[ext_resource type="Texture2D" uid="uid://suurw3pvvijr" path="res://UI/gameover.png" id="5_se3bo"]
+[ext_resource type="FontFile" uid="uid://dn6jjr6175mh6" path="res://flappy-bird-font/Square-Black.ttf" id="6_ybyi8"]
+[ext_resource type="PackedScene" uid="uid://ewn1ixhacy6a" path="res://TSCN FILE/player.tscn" id="7_eo21q"]
+[ext_resource type="Texture2D" uid="uid://bl06o0x4ot3mo" path="res://Flappy Bird Assets 1.6 (Zip)/Flappy Bird Assets/Tiles/base (1).png" id="8_tc37d"]
+[ext_resource type="Script" uid="uid://bbd2v8anvy34t" path="res://GD SCRIPTS/ground.gd" id="9_7seeo"]
+[ext_resource type="AudioStream" uid="uid://cil84da87bjn4" path="res://Sound Efects/hit.ogg" id="10_ealtb"]
+[ext_resource type="AudioStream" uid="uid://b0dm1clocyem5" path="res://Sound Efects/die.ogg" id="11_bvve3"]
+[ext_resource type="AudioStream" uid="uid://c6vbfkrl88ul0" path="res://Sound Efects/point.ogg" id="12_3vwsy"]
+[ext_resource type="AudioStream" uid="uid://bvoy03vfgpyt6" path="res://Sound Efects/03. Main Theme.mp3" id="13_posnm"]
+[ext_resource type="AudioStream" uid="uid://bcmtan2u1eh4i" path="res://Sound Efects/faaah.mp3" id="14_mi63q"]
+[ext_resource type="FontFile" uid="uid://du8g83d1jboon" path="res://flappy-bird-font/FlappyBirdRegular-9Pq0.ttf" id="15_6krx6"]
+[ext_resource type="AudioStream" uid="uid://cvucypqob5q4r" path="res://Sound Efects/mixkit-mouse-click-close-1113.wav" id="16_rnd78"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vivmo"]
+bg_color = Color(0, 0, 0, 0.7137255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w48qg"]
+bg_color = Color(0.955633, 0.09216463, 0.20078224, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycdy4"]
+size = Vector2(512, 100)
+
+[node name="main" type="Node2D" unique_id=322370977]
+script = ExtResource("1_51mm7")
+pipe_scene = ExtResource("2_166cc")
+
+[node name="background" parent="." unique_id=1304095588 instance=ExtResource("3_uy8mw")]
+
+[node name="background2" parent="." unique_id=2035771769 instance=ExtResource("4_xkjqv")]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1988541251]
+
+[node name="gameover" type="Sprite2D" parent="CanvasLayer" unique_id=1316254427]
+visible = false
+z_index = 15
+position = Vector2(150, 189)
+texture = ExtResource("5_se3bo")
+centered = false
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=282831189]
+visible = false
+offset_left = 206.0
+offset_top = 234.0
+offset_right = 295.0
+offset_bottom = 262.0
+theme_override_fonts/font = ExtResource("6_ybyi8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_vivmo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w48qg")
+text = "TRY AGAIN"
+
+[node name="player" parent="." unique_id=1043748519 instance=ExtResource("7_eo21q")]
+position = Vector2(169, 165)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1563709532]
+visible = false
+position = Vector2(0, 44)
+
+[node name="pipetimer" type="Timer" parent="." unique_id=1880395672]
+wait_time = 1.5
+autostart = true
+
+[node name="groundstop" type="Area2D" parent="." unique_id=182504144]
+
+[node name="ground" type="Sprite2D" parent="groundstop" unique_id=153659910]
+z_index = 5
+texture_repeat = 2
+position = Vector2(256, 489)
+texture = ExtResource("8_tc37d")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 100)
+script = ExtResource("9_7seeo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="groundstop" unique_id=685664406]
+position = Vector2(256, 488)
+shape = SubResource("RectangleShape2D_ycdy4")
+
+[node name="HIT" type="AudioStreamPlayer2D" parent="." unique_id=1758908935]
+stream = ExtResource("10_ealtb")
+
+[node name="DIE" type="AudioStreamPlayer2D" parent="." unique_id=71479838]
+stream = ExtResource("11_bvve3")
+
+[node name="POINT" type="AudioStreamPlayer2D" parent="." unique_id=55885864]
+stream = ExtResource("12_3vwsy")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=548723167]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 245.0
+offset_right = 265.0
+offset_bottom = 40.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_ybyi8")
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="WIN" type="Label" parent="." unique_id=1959007405]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 184.0
+offset_top = 105.0
+offset_right = 319.0
+offset_bottom = 156.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_ybyi8")
+theme_override_font_sizes/font_size = 40
+text = "YOU WIN"
+
+[node name="BG" type="AudioStreamPlayer2D" parent="." unique_id=1667315251]
+stream = ExtResource("13_posnm")
+autoplay = true
+
+[node name="FAAH" type="AudioStreamPlayer2D" parent="." unique_id=149892297]
+stream = ExtResource("14_mi63q")
+
+[node name="back" type="Button" parent="." unique_id=1574151863]
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 37.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("15_6krx6")
+theme_override_font_sizes/font_size = 10
+text = "BACK"
+
+[node name="CLICK" type="AudioStreamPlayer2D" parent="." unique_id=1578150408]
+visible = false
+stream = ExtResource("16_rnd78")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1540344046]
+
+[node name="HighScoreLabel" type="Label" parent="CanvasLayer2" unique_id=1091613556]
+offset_left = 223.0
+offset_top = 50.0
+offset_right = 263.0
+offset_bottom = 73.0
+text = "0"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="pipetimer" to="." method="_on_pipetimer_timeout"]
+[connection signal="body_entered" from="groundstop" to="." method="_on_groundstop_body_entered"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://o8ilm0thlsul"]
+
+[ext_resource type="Script" uid="uid://biifen7428dph" path="res://GD SCRIPTS/start.gd" id="1_1n0d2"]
+[ext_resource type="Texture2D" uid="uid://ddi743jyc5622" path="res://Flappy Bird Assets 1.6 (Zip)/Flappy Bird Assets/Background/Background2.png" id="1_qn1rc"]
+[ext_resource type="Texture2D" uid="uid://ckkbnuam21se2" path="res://UI/message.png" id="2_1n0d2"]
+[ext_resource type="FontFile" uid="uid://du8g83d1jboon" path="res://flappy-bird-font/FlappyBirdRegular-9Pq0.ttf" id="3_4a3qj"]
+[ext_resource type="Texture2D" uid="uid://bl06o0x4ot3mo" path="res://Flappy Bird Assets 1.6 (Zip)/Flappy Bird Assets/Tiles/base (1).png" id="4_oiuna"]
+[ext_resource type="FontFile" uid="uid://dn6jjr6175mh6" path="res://flappy-bird-font/Square-Black.ttf" id="4_p0nl4"]
+[ext_resource type="Script" uid="uid://bbd2v8anvy34t" path="res://GD SCRIPTS/ground.gd" id="5_4a3qj"]
+[ext_resource type="AudioStream" uid="uid://cvucypqob5q4r" path="res://Sound Efects/mixkit-mouse-click-close-1113.wav" id="7_g38d0"]
+[ext_resource type="AudioStream" uid="uid://bvoy03vfgpyt6" path="res://Sound Efects/03. Main Theme.mp3" id="8_pob1m"]
+[ext_resource type="Texture2D" uid="uid://bpsg8yq2oflyy" path="res://Flappy Bird Assets 1.6 (Zip)/Flappy Bird Assets/Tiles/cloud (2).png" id="9_gophc"]
+[ext_resource type="Texture2D" uid="uid://lirieqlky3mk" path="res://Flappy Bird Assets 1.6 (Zip)/Flappy Bird Assets/Player/StyleBird2/Bird2-1.png" id="11_da165"]
+
+[node name="start" type="Node2D" unique_id=1689666993]
+script = ExtResource("1_1n0d2")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=726237527]
+offset_left = -94.0
+offset_top = -1050.0
+offset_right = 703.0
+offset_bottom = 3063.0
+texture = ExtResource("1_qn1rc")
+
+[node name="Label" type="Label" parent="." unique_id=1198575202]
+offset_top = 87.0
+offset_right = 512.0
+offset_bottom = 248.0
+theme_override_colors/font_color = Color(18.892157, 18.892157, 18.892157, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4a3qj")
+theme_override_font_sizes/font_size = 85
+text = "flappy
+bird"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1196153417]
+offset_top = 241.0
+offset_right = 512.0
+offset_bottom = 292.0
+theme_override_colors/font_color = Color(0, 18.892157, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4a3qj")
+theme_override_font_sizes/font_size = 50
+text = "Get Ready!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1134037304]
+offset_left = 224.0
+offset_top = 299.0
+offset_right = 272.0
+offset_bottom = 336.0
+text = "."
+
+[node name="Label3" type="Label" parent="." unique_id=1874038831]
+z_index = 10
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -6.0
+offset_top = 346.0
+offset_right = 506.0
+offset_bottom = 366.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1.0324832, 1.0324832, 0.8263252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_p0nl4")
+theme_override_font_sizes/font_size = 20
+text = "TAP TO PLAY"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=292659280]
+position = Vector2(251, 316)
+texture = ExtResource("2_1n0d2")
+region_enabled = true
+region_rect = Rect2(28, 162, 130, 45)
+
+[node name="ground" type="Sprite2D" parent="." unique_id=1603909937]
+z_index = 5
+texture_repeat = 2
+position = Vector2(256, 489)
+texture = ExtResource("4_oiuna")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 100)
+script = ExtResource("5_4a3qj")
+
+[node name="BG" type="AudioStreamPlayer2D" parent="." unique_id=964580685]
+stream = ExtResource("8_pob1m")
+autoplay = true
+
+[node name="CLICK" type="AudioStreamPlayer2D" parent="." unique_id=1468601799]
+stream = ExtResource("7_g38d0")
+
+[node name="Cloud(2)" type="Sprite2D" parent="." unique_id=1730767663]
+position = Vector2(447, 46.000004)
+scale = Vector2(0.45264363, 0.4542553)
+texture = ExtResource("9_gophc")
+region_enabled = true
+region_rect = Rect2(0, 0, 270, 180)
+
+[node name="Cloud(2)2" type="Sprite2D" parent="." unique_id=571367494]
+position = Vector2(435, 264)
+scale = Vector2(0.45264363, 0.4542553)
+texture = ExtResource("9_gophc")
+region_enabled = true
+region_rect = Rect2(0, 0, 270, 180)
+
+[node name="Cloud(2)3" type="Sprite2D" parent="." unique_id=877241487]
+position = Vector2(95, 51)
+scale = Vector2(0.45264363, 0.4542553)
+texture = ExtResource("9_gophc")
+region_enabled = true
+region_rect = Rect2(0, 150, 339, 200)
+
+[node name="Cloud(2)4" type="Sprite2D" parent="." unique_id=1855797002]
+position = Vector2(65, 246)
+scale = Vector2(0.45264363, 0.4542553)
+texture = ExtResource("9_gophc")
+region_enabled = true
+region_rect = Rect2(0, 0, 270, 180)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1421531306]
+visible = false
+texture_filter = 1
+position = Vector2(249, 323)
+scale = Vector2(2, 2)
+texture = ExtResource("11_da165")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 20)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

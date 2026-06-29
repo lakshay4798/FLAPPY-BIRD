@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://pcaqsvnguy7t"]
+
+[ext_resource type="Texture2D" uid="uid://ddi743jyc5622" path="res://Flappy Bird Assets 1.6 (Zip)/Flappy Bird Assets/Background/Background2.png" id="1_oabld"]
+
+[node name="background" type="Node2D" unique_id=1304095588]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=546286066]
+offset_top = -5.0
+offset_right = 512.0
+offset_bottom = 453.0
+texture = ExtResource("1_oabld")
